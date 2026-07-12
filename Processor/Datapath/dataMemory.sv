@@ -7,12 +7,12 @@ module dataMemory(
     output logic [31:0] readData
 );
 
-logic [31:0] memory[127:0];
+logic [31:0] memory[255:0];
 
-assign readData = memory[address[8:2]];
+assign readData = memory[address[31:2]];
 
 always_ff @(posedge clk)
     if (we) 
-        memory[address[8:2]] <= writeData;
+        memory[address[31:2]] <= writeData;
 
 endmodule

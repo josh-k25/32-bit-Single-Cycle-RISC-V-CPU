@@ -1,0 +1,19 @@
+module alu(
+    input logic [31:0] sourceA,
+    input logic [31:0] sourceB,
+    input logic [2:0] aluControl,
+
+    output logic [31:0] aluResult
+);
+
+always_comb begin
+    case (aluControl)
+        3'b000: aluResult = sourceA + sourceB;
+        3'b001: aluResult = sourceA - sourceB;
+        3'b010: aluResult = sourceA & sourceB;
+        3'b011: aluResult = sourceA | sourceB;
+        default: aluResult = 32'h0000_0000;
+    endcase
+end
+
+endmodule
