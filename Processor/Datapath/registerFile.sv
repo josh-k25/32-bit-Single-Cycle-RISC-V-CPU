@@ -13,7 +13,7 @@ always_ff @(posedge clk)
     if (writeEnable && (rdAddress != 5'b00000)) 
         registerArray[rdAddress] <= writeData;
 
-assign readData1 = (rr1Address == 5'b00000) ? 32'h0000_0000 : registerArray[rdAddress];
-assign readData2 = (rr2Address == 5'b00000) ? 32'h0000_0000 : registerArray[rdAddress];
+assign readData1 = (rr1Address == 5'b00000) ? 32'h0000_0000 : registerArray[rr1Address];
+assign readData2 = (rr2Address == 5'b00000) ? 32'h0000_0000 : registerArray[rr2Address];
 
 endmodule

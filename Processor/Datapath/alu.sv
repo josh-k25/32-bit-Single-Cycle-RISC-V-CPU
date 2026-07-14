@@ -3,7 +3,8 @@ module alu(
     input logic [31:0] sourceB,
     input logic [2:0] aluControl,
 
-    output logic [31:0] aluResult
+    output logic [31:0] aluResult,
+    output logic zero
 );
 
 always_comb begin
@@ -15,5 +16,7 @@ always_comb begin
         default: aluResult = 32'h0000_0000;
     endcase
 end
+
+assign zero = (aluResult == 0)
 
 endmodule
