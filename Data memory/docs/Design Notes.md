@@ -8,4 +8,24 @@
 ### instructionMemory
 - dataArray has the same depth as the above for the same reason
 
-- 
+## July 15th. 2026
+
+### controller testbench
+
+Testing the following to ensure that the implemented instructions function as intended:
+
+- lw
+- sw
+- add
+- sub
+- slt
+- or
+- and
+- addi
+- slti
+- ori
+- andi
+- beq (not taken)
+- beq (taken)
+- jal
+- unsupported opcode

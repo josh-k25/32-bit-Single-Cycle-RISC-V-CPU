@@ -13,10 +13,15 @@ always_comb begin
         3'b001: aluResult = sourceA - sourceB;
         3'b010: aluResult = sourceA & sourceB;
         3'b011: aluResult = sourceA | sourceB;
+        3'b101: aluResult = begin
+            if ($signed(sourceA) < $signed(sourceB))
+            aluResult = 32'd1;
+            else
+            aluResult = 32'd0;
         default: aluResult = 32'h0000_0000;
     endcase
 end
 
-assign zero = (aluResult == 0)
+assign zero = (aluResult == 0);
 
 endmodule
