@@ -14,7 +14,7 @@ always_comb case (immediateSource)
     //B type 
     2'b10: extendedImmediate = {{20{immediate[24]}}, immediate[0], immediate[23:18], immediate[4:1], 1'b0};
     //J type
-    2'b11: extendedImmediate = {{12{immediate[24]}}, immediate[12:5], immediate[13], immediate[23:14], 1’b0};
+    2'b11: extendedImmediate = {{12{immediate[24]}}, immediate[12:5], immediate[13], immediate[23:14], 1'b0};
     default: extendedImmediate = 32'h0000_0000;
 endcase
 

@@ -17,9 +17,25 @@ logic [1:0] aluOperation;
 logic branch;
 logic jump;
 
-aluDecoder aluDecoder(opcode[5], aluOperation, funct3, funct7Bit5, aluControl);
+aluDecoder aluDecoder(
+    opcode[5], 
+    aluOperation, 
+    funct3, 
+    funct7Bit5, 
+    aluControl
+);
 
-mainDecoder mainDecoder(opcode, branch, jump, resultSource, aluSource, immediateSource, registerWrite, memoryWrite, aluOperation);
+mainDecoder mainDecoder(
+    opcode, 
+    branch, 
+    jump, 
+    resultSource, 
+    aluSource,
+    immediateSource, 
+    registerWrite, 
+    memoryWrite, 
+    aluOperation
+);
 
 assign pcSource = (branch & zero) | jump;
 
