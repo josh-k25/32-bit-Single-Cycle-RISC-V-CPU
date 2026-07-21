@@ -8,7 +8,7 @@
 ### instructionMemory
 - dataArray has the same depth as the above for the same reason
 
-## July 15th. 2026
+## July 15th, 2026
 
 ### controller testbench
 
@@ -29,3 +29,25 @@ Testing the following to ensure that the implemented instructions function as in
 - beq (taken)
 - jal
 - unsupported opcode
+
+## July 18th, 2026
+
+### datapath testbench
+
+Testing the following to ensure that the implemented instructions function as intended (what to look for):
+
+- reset (PC = 0)
+- PC update (PC increases by 4 when PCSource = 0)
+- positive addi (immediate selected as ALU input, correct addition, result written to rd)
+- negative addi (immediate is sign-extended correctly)
+- add (two register values added and result written to rd)
+- lw (address equals base register plus immediate, readData selected and written to rd)
+- sw (address equals base register plus immediate, writeData equals the value from rs2)
+- beq not taken (unequal registers produce zero = 0, next PC is PC + 4)
+- beq taken (equal registers produce zero = 1, next PC is PC + branch immediate)
+- backward beq (negative B-type immediate is sign-extended and added to the PC correctly)
+- jal (next PC becomes PC + jump immediate, while the original PC + 4 is written to rd)
+- write to x0 (attempted write is ignored and x0 remains zero)
+- result-source selection (00 selects ALU result, 01 selects memory data, 10 selects PC + 4)
+- ALU-source selection (0 selects register data, 1 selects the extended immediate)
+- consecutive instructions (a value written during one cycle can be read and used by a later instruction)

@@ -2,7 +2,7 @@ module datapath(
     input logic clk,
     input logic reset,
     input logic [31:0] instruction,
-    input logic [31:0] writeDataIn,
+    input logic [31:0] readData,
 
     input logic pcSource,
     input logic aluSource,
@@ -13,7 +13,7 @@ module datapath(
 
     output logic [31:0] pc,
     output logic [31:0] aluResult,
-    output logic [31:0] writeDataOut,
+    output logic [31:0] writeData,
     output logic zero
 );
 //internal signals for registerFile output
@@ -67,36 +67,34 @@ registerFile registerFile(
     instruction[19:15], 
     instruction[24:20], 
     instruction[11:7], 
-    result, 
-    writeData, 
+    result,     
     registerWrite, 
     registerData1, 
     registerData2
-    );
+);
 
 immediateExtender immediateExtender(
     immediateSource, 
     instruction[31:7], 
     extendedImmediate
-    );
+);
 
 
 //alu path
-aluSource aluSource(
-    aluControl, 
+aluSource aluSourceMux(
+    aluSource, 
     registerData2, 
     extendedImmediate, 
     aluInput
-    );
+);
 
 alu aluInstance(
     registerData1, 
     aluInput, 
     aluControl, 
-    aluResult
+    aluResult,
+    zero
 );
-
-assign zero = (aluResult == 32'b0);
 
 //writeback path
 resultSource resultSourceMux(
