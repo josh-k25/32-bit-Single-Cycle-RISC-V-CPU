@@ -50,4 +50,3 @@ Testing the following to ensure that the implemented instructions function as in
 - write to x0 (attempted write is ignored and x0 remains zero)
 - result-source selection (00 selects ALU result, 01 selects memory data, 10 selects PC + 4)
 - ALU-source selection (0 selects register data, 1 selects the extended immediate)
-- consecutive instructions (a value written during one cycle can be read and used by a later instruction)
