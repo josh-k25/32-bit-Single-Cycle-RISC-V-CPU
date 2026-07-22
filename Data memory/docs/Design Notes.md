@@ -50,3 +50,12 @@ Testing the following to ensure that the implemented instructions function as in
 - write to x0 (attempted write is ignored and x0 remains zero)
 - result-source selection (00 selects ALU result, 01 selects memory data, 10 selects PC + 4)
 - ALU-source selection (0 selects register data, 1 selects the extended immediate)
+
+## July 22nd, 2026
+
+### top module
+
+- The following outputs were instnatiated instead of staying as internal outputs to be observed during testing:
+    output logic memoryWrite,
+    output logic [31:0] dataAddress,
+    output logic [31:0] writeData
